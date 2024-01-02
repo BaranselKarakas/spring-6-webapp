@@ -9,6 +9,8 @@ import guru.springframework.spring6webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BootstrapData implements CommandLineRunner {
 
@@ -71,5 +73,12 @@ public class BootstrapData implements CommandLineRunner {
 
 
     System.out.println("Publisher Count: " + publisherRepository.count());
+    System.out.println("List of Authors:");
+    authorRepository
+        .findAll()
+        .forEach(
+            author -> {
+              System.out.println(author.getFirstName() + author.getLastName());
+            });
   }
 }
